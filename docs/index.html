@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online LMS | Learning Dashboard</title>
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f3f6fb;
+            color: #243047;
+        }
+
+        header {
+            background: #243b80;
+            color: white;
+            padding: 28px 20px;
+            text-align: center;
+        }
+
+        header p { color: #e0e7ff; }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 16px;
+            background: white;
+            box-shadow: 0 2px 8px #00000010;
+        }
+
+        nav a {
+            color: #243b80;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 14px;
+            border-radius: 6px;
+        }
+
+        nav a:hover { background: #edf2ff; }
+
+        main {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .welcome {
+            background: white;
+            padding: 28px;
+            border-radius: 14px;
+            margin-bottom: 26px;
+            border-left: 5px solid #243b80;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 6px 10px;
+            background: #fff2cc;
+            color: #755400;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        h2 { color: #243b80; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #00000008;
+        }
+
+        .card h3 { margin-top: 0; }
+
+        .course-icon {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #243b80;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            border: 0;
+            cursor: pointer;
+        }
+
+        .muted { color: #64748b; }
+
+        .progress-bar {
+            height: 9px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #16805d;
+        }
+
+        section { scroll-margin-top: 20px; }
+
+        footer {
+            text-align: center;
+            padding: 28px;
+            color: #64748b;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Online Learning Management System</h1>
+        <p>Learn new skills, one course at a time.</p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#courses">Courses</a>
+        <a href="#progress">My Progress</a>
+        <a href="#quizzes">Quiz Results</a>
+        <a href="#students">Student Details</a>
+    </nav>
+
+    <main>
+        <section class="welcome" id="home">
+            <span class="tag">STATIC DEMO</span>
+            <h2>Welcome to Online LMS!</h2>
+            <p>Explore courses, track learning progress, and review quiz results.</p>
+            <a class="button" href="#courses">Explore Courses</a>
+        </section>
+
+        <section id="courses">
+            <h2>Available Courses</h2>
+            <p class="muted">Explore a selection of learning courses.</p>
+
+            <div class="grid">
+                <article class="card">
+                    <div class="course-icon">💻</div>
+                    <h3>Java Programming</h3>
+                    <p>Learn Java fundamentals and object-oriented programming.</p>
+                    <p class="muted">Instructor: Dr. Priya</p>
+                    <a class="button" href="#progress">View Progress</a>
+                </article>
+
+                <article class="card">
+                    <div class="course-icon">🗄️</div>
+                    <h3>Database Management</h3>
+                    <p>Learn SQL, relational databases, and database concepts.</p>
+                    <p class="muted">Instructor: Dr. Priya</p>
+                    <a class="button" href="#progress">View Progress</a>
+                </article>
+
+                <article class="card">
+                    <div class="course-icon">🐍</div>
+                    <h3>Python Programming</h3>
+                    <p>Explore programming concepts using Python.</p>
+                    <p class="muted">Instructor: LMS Faculty</p>
+                    <a class="button" href="#courses">Course Overview</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="progress">
+            <h2>Sample Learning Progress</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>Java Programming</h3>
+                    <p>Progress: 20%</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width:20%"></div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <h3>Database Management</h3>
+                    <p>Progress: 50%</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width:50%"></div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="quizzes">
+            <h2>Sample Quiz Results</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>Java Basics Quiz</h3>
+                    <p>Sample score: <strong>16 / 20</strong></p>
+                </article>
+
+                <article class="card">
+                    <h3>SQL Basics Quiz</h3>
+                    <p class="muted">Sample result for demonstration.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="students">
+            <h2>Student Details</h2>
+            <div class="card">
+                <p><strong>Student name:</strong> Asha Kumar</p>
+                <p><strong>Role:</strong> Student</p>
+                <p class="muted">Example information for visual demonstration only.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        Online LMS · Academic Project Demo
+        <p>Sample content only. No live database connection.</p>
+    </footer>
+</body>
+</html>
