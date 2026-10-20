@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Learning Management System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f3f6fb;
+            color: #243047;
+        }
+
+        header {
+            background: #243b80;
+            color: white;
+            padding: 24px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 24px;
+            background: white;
+            border-radius: 12px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            color: #243b80;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            padding: 10px 16px;
+            border-radius: 6px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.85;
+        }
+
+        .login {
+            background: #243b80;
+        }
+
+        .courses {
+            background: #16805d;
+        }
+
+        .progress {
+            background: #270b56;
+        }
+
+        .quizzes {
+            background: #8b2635;
+        }
+
+        .students {
+            background: #0d501f;
+        }
+
+        .add-course {
+            background: #386a0c;
+        }
+
+        .course {
+            padding: 14px;
+            margin: 12px 0;
+            background: #edf2ff;
+            border-radius: 8px;
+        }
+
+        button {
+            background: #243b80;
+            color: white;
+            border: 0;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #182957;
+        }
+
+        @media (max-width: 600px) {
+            main {
+                margin: 20px 12px;
+                padding: 18px;
+            }
+
+            .nav-links a {
+                flex: 1 1 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Online Learning Management System</h1>
+        <p>Learn new skills, one course at a time.</p>
+    </header>
+
+    <main>
+        <h2>Welcome to Online LMS</h2>
+        <p>Explore courses and track your learning progress.</p>
+
+        <div class="nav-links">
+            <a href="login.html" class="login">
+                Student / Instructor Login
+            </a>
+
+            <a href="courses" class="courses">
+                View Courses
+            </a>
+
+            <a href="progress" class="progress">
+                View My Progress
+            </a>
+
+            <a href="quizzes" class="quizzes">
+                View Quiz Results
+            </a>
+
+            <a href="students" class="students">
+                Student Details
+            </a>
+
+            <a href="add-course" class="add-course">
+                Add Course Details
+            </a>
+        </div>
+
+        <h2>Available Courses</h2>
+
+        <div class="course">
+            <strong>Java Programming</strong>
+            <p>Learn Java fundamentals.</p>
+        </div>
+
+        <div class="course">
+            <strong>Database Management</strong>
+            <p>Learn SQL and database concepts.</p>
+        </div>
+
+        <button onclick="alert('Your LMS home page is working!')">
+            Test My Website
+        </button>
+    </main>
+</body>
+</html>

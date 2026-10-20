@@ -1,0 +1,11 @@
+
+*.class
+*.jar
+.env
+.env.*
+!.env.example
+secrets.properties
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
