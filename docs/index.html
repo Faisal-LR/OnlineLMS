@@ -3,1457 +3,251 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#10254a">
-<title>OnlineLMS | Learn. Grow. Succeed.</title>
-
+<title>LearnSpace LMS</title>
 <style>
-:root {
-    --navy: #10254a;
-    --blue: #3478f6;
-    --blue-light: #eaf1ff;
-    --bg: #f5f7fc;
-    --text: #192945;
-    --muted: #71809a;
-    --white: #fff;
-    --border: #e7ebf3;
-    --green: #14a779;
-    --shadow: 0 12px 35px rgba(25, 45, 80, .07);
-}
-
-* { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-    margin: 0;
-    font-family: Inter, "Segoe UI", Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-}
-
-button, input { font: inherit; }
-
-button, a { -webkit-tap-highlight-color: transparent; }
-
-a { color: inherit; text-decoration: none; }
-
-button { cursor: pointer; }
-
-.container {
-    width: min(1180px, 92%);
-    margin: auto;
-}
-
-.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    background: rgba(255,255,255,.96);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-}
-
-.nav-inner {
-    min-height: 76px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.logo {
-    font-size: 25px;
-    font-weight: 850;
-    letter-spacing: -1px;
-    white-space: nowrap;
-}
-
-.logo span { color: var(--blue); }
-
-.logo-icon { margin-right: 7px; }
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-}
-
-.nav-links a {
-    color: #52617b;
-    font-size: 14px;
-    font-weight: 650;
-}
-
-.nav-links a:hover { color: var(--blue); }
-
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    border: 1px solid transparent;
-    border-radius: 10px;
-    padding: 11px 18px;
-    font-weight: 750;
-    font-size: 14px;
-    transition: .2s ease;
-}
-
-.btn-primary {
-    background: var(--blue);
-    color: white;
-    box-shadow: 0 5px 14px rgba(52,120,246,.18);
-}
-
-.btn-primary:hover {
-    background: #2264df;
-    transform: translateY(-1px);
-}
-
-.btn-outline {
-    border-color: #d8e1f2;
-    color: var(--navy);
-    background: white;
-}
-
-.btn-outline:hover { border-color: var(--blue); }
-
-.menu-toggle {
-    display: none;
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 9px;
-    padding: 8px 12px;
-}
-
-/* Hero */
-
-.hero {
-    position: relative;
-    overflow: hidden;
-    background:
-        radial-gradient(ellipse at 85% 15%, rgba(62,123,240,.35), transparent 35%),
-        linear-gradient(120deg, #10254a, #173c73 65%, #2459a0);
-    color: white;
-}
-
-.hero-grid {
-    min-height: 445px;
-    display: grid;
-    grid-template-columns: 1.1fr .9fr;
-    align-items: center;
-    gap: 45px;
-    padding-top: 48px;
-    padding-bottom: 48px;
-}
-
-.eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 12px;
-    border-radius: 50px;
-    background: rgba(255,255,255,.12);
-    border: 1px solid rgba(255,255,255,.12);
-    color: #dbe7ff;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: .4px;
-}
-
-.hero h1 {
-    font-size: clamp(38px, 5vw, 62px);
-    line-height: 1.08;
-    letter-spacing: -2.3px;
-    margin: 22px 0 18px;
-}
-
-.hero h1 span { color: #72b5ff; }
-
-.hero-copy {
-    max-width: 560px;
-    color: #d3def3;
-    font-size: 16px;
-    margin-bottom: 26px;
-}
-
-.hero-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-}
-
-.hero .btn-outline {
-    background: transparent;
-    border-color: #718bb9;
-    color: white;
-}
-
-.hero-art {
-    position: relative;
-    min-height: 300px;
-    display: grid;
-    place-items: center;
-}
-
-.art-orbit {
-    position: absolute;
-    width: 290px;
-    height: 290px;
-    border: 1px solid rgba(255,255,255,.18);
-    border-radius: 50%;
-}
-
-.art-orbit.two {
-    width: 235px;
-    height: 235px;
-}
-
-.learning-card {
-    position: relative;
-    z-index: 2;
-    width: min(340px, 100%);
-    padding: 23px;
-    border: 1px solid rgba(255,255,255,.35);
-    border-radius: 22px;
-    background: rgba(255,255,255,.12);
-    backdrop-filter: blur(16px);
-    box-shadow: 0 24px 70px rgba(0,0,0,.2);
-    transform: rotate(-2deg);
-}
-
-.learning-card-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 23px;
-}
-
-.avatar {
-    display: grid;
-    place-items: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 14px;
-    background: #c5ddff;
-    color: #173c73;
-    font-weight: 900;
-}
-
-.online-pill {
-    background: rgba(28,215,155,.18);
-    color: #8af2ce;
-    padding: 5px 10px;
-    border-radius: 30px;
-    font-size: 11px;
-    font-weight: 800;
-}
-
-.mini-label {
-    color: #d6e1f7;
-    font-size: 12px;
-}
-
-.learning-card h3 { margin: 3px 0 15px; }
-
-.mini-course {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: rgba(255,255,255,.1);
-    border-radius: 12px;
-    padding: 11px;
-    margin-top: 10px;
-}
-
-.mini-icon {
-    width: 43px;
-    height: 43px;
-    display: grid;
-    place-items: center;
-    background: rgba(255,255,255,.14);
-    border-radius: 10px;
-    font-size: 22px;
-}
-
-.mini-course strong { display: block; font-size: 13px; }
-.mini-course small { color: #cbd9f1; }
-
-.floating-note {
-    position: absolute;
-    right: -8px;
-    bottom: 14px;
-    background: white;
-    color: var(--navy);
-    border-radius: 13px;
-    padding: 13px 17px;
-    box-shadow: var(--shadow);
-    font-size: 12px;
-    font-weight: 800;
-}
-
-/* Statistics */
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 17px;
-    margin-top: 27px;
-    margin-bottom: 55px;
-}
-
-.stat {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 5px 20px rgba(20,40,70,.025);
-}
-
-.stat-icon {
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 14px;
-    background: var(--blue-light);
-    font-size: 22px;
-}
-
-.stat strong {
-    display: block;
-    font-size: 25px;
-    line-height: 1.2;
-}
-
-.stat small { color: var(--muted); font-size: 12px; }
-
-/* Sections */
-
-.section { margin: 55px 0; }
-
-.section-head {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: 20px;
-    margin-bottom: 24px;
-}
-
-.section-head h2 {
-    margin: 0 0 5px;
-    font-size: 30px;
-    letter-spacing: -.8px;
-}
-
-.section-head p {
-    color: var(--muted);
-    margin: 0;
-}
-
-.text-link {
-    color: var(--blue);
-    font-size: 14px;
-    font-weight: 800;
-    white-space: nowrap;
-}
-
-.search-row {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 18px;
-}
-
-.search-box {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 0 15px;
-}
-
-.search-box input {
-    width: 100%;
-    border: 0;
-    outline: 0;
-    padding: 13px 0;
-    background: transparent;
-    color: var(--text);
-}
-
-.filters {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 22px;
-}
-
-.filter {
-    background: white;
-    color: #60708b;
-    border: 1px solid var(--border);
-    padding: 8px 15px;
-    border-radius: 30px;
-    font-size: 12px;
-    font-weight: 800;
-}
-
-.filter.active, .filter:hover {
-    color: white;
-    background: var(--navy);
-    border-color: var(--navy);
-}
-
-.course-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.course-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 17px;
-    overflow: hidden;
-    transition: transform .2s, box-shadow .2s;
-}
-
-.course-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow);
-}
-
-.course-cover {
-    min-height: 150px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    overflow: hidden;
-}
-
-.cover-java { background: linear-gradient(135deg,#27204e,#5142a4); }
-.cover-db { background: linear-gradient(135deg,#0e506f,#318eb1); }
-.cover-python { background: linear-gradient(135deg,#173c73,#367dd3); }
-.cover-web { background: linear-gradient(135deg,#8b3e22,#ed8b46); }
-.cover-design { background: linear-gradient(135deg,#6c3a96,#ba78dd); }
-.cover-cloud { background: linear-gradient(135deg,#12655d,#3ab99a); }
-
-.cover-symbol {
-    font-size: 65px;
-    filter: drop-shadow(0 8px 8px rgba(0,0,0,.15));
-}
-
-.category {
-    align-self: flex-start;
-    background: rgba(255,255,255,.17);
-    border: 1px solid rgba(255,255,255,.2);
-    color: white;
-    padding: 6px 10px;
-    border-radius: 7px;
-    font-size: 11px;
-    font-weight: 800;
-}
-
-.course-body { padding: 20px; }
-
-.course-body h3 { margin: 0 0 8px; font-size: 18px; }
-
-.course-description {
-    min-height: 49px;
-    color: var(--muted);
-    font-size: 13px;
-    margin: 0 0 16px;
-}
-
-.course-meta {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 8px;
-    color: var(--muted);
-    font-size: 12px;
-    margin-bottom: 16px;
-}
-
-.course-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding-top: 14px;
-    border-top: 1px solid var(--border);
-}
-
-.price { font-size: 15px; font-weight: 850; }
-.price small { display: block; color: var(--muted); font-size: 10px; font-weight: 500; }
-
-.course-bottom .btn { padding: 9px 12px; font-size: 12px; }
-
-.empty-state {
-    display: none;
-    text-align: center;
-    background: white;
-    padding: 35px;
-    border-radius: 14px;
-    color: var(--muted);
-}
-
-/* Benefits */
-
-.benefit-section {
-    background: white;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 55px 0;
-}
-
-.benefit-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
-
-.benefit {
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-}
-
-.benefit-icon {
-    width: 50px;
-    height: 50px;
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
-    border-radius: 14px;
-    background: var(--blue-light);
-    font-size: 23px;
-}
-
-.benefit h3 { margin: 0 0 5px; font-size: 16px; }
-.benefit p { margin: 0; font-size: 13px; color: var(--muted); }
-
-/* Dashboard preview */
-
-.dashboard-panel {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 25px;
-    box-shadow: var(--shadow);
-}
-
-.dashboard-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    margin-bottom: 22px;
-}
-
-.dashboard-top h3 { margin: 0; }
-
-.demo-badge {
-    color: #8c6411;
-    background: #fff3cf;
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 800;
-}
-
-.progress-item {
-    padding: 17px 0;
-    border-top: 1px solid var(--border);
-}
-
-.progress-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    margin-bottom: 10px;
-}
-
-.progress-info strong { font-size: 14px; }
-.progress-info span { color: var(--muted); font-size: 12px; }
-
-.progress-track {
-    height: 9px;
-    background: #edf0f6;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.progress-value {
-    height: 100%;
-    background: linear-gradient(90deg,#3478f6,#65b5ff);
-    border-radius: inherit;
-}
-
-.dashboard-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 22px;
-}
-
-.quiz-result {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--border);
-}
-
-.quiz-result:last-child { border: 0; }
-
-.quiz-result small { display: block; color: var(--muted); }
-
-.score {
-    color: var(--green);
-    background: #e4f8f0;
-    padding: 6px 10px;
-    border-radius: 8px;
-    font-weight: 850;
-    white-space: nowrap;
-}
-
-/* CTA and footer */
-
-.cta {
-    margin: 60px 0;
-    padding: 40px;
-    border-radius: 20px;
-    background: linear-gradient(120deg,#10254a,#2e63b3);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 25px;
-}
-
-.cta h2 { margin: 0 0 8px; font-size: 28px; }
-.cta p { margin: 0; color: #d5e2fb; }
-
-footer {
-    background: #0d1c36;
-    color: #d1dbec;
-    padding: 40px 0 20px;
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: 1.6fr 1fr 1fr 1fr;
-    gap: 35px;
-    margin-bottom: 30px;
-}
-
-footer .logo { color: white; }
-footer p { color: #aab9d1; font-size: 13px; }
-footer h4 { color: white; margin-top: 0; }
-
-.footer-links {
-    display: grid;
-    gap: 9px;
-    font-size: 13px;
-    color: #b5c3da;
-}
-
-.footer-links a:hover { color: white; }
-
-.footer-bottom {
-    border-top: 1px solid #293a55;
-    padding-top: 18px;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    flex-wrap: wrap;
-    color: #aab9d1;
-    font-size: 12px;
-}
-
-/* Modals */
-
-.modal-backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 100;
-    background: rgba(10,24,49,.65);
-    backdrop-filter: blur(5px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 18px;
-}
-
-.modal-backdrop.open { display: flex; }
-
-.modal {
-    width: min(460px,100%);
-    background: white;
-    border-radius: 19px;
-    padding: 28px;
-    position: relative;
-    max-height: 90vh;
-    overflow-y: auto;
-    box-shadow: 0 30px 90px rgba(0,0,0,.25);
-}
-
-.modal-close {
-    position: absolute;
-    top: 13px;
-    right: 15px;
-    width: 34px;
-    height: 34px;
-    border: 0;
-    border-radius: 50%;
-    background: #f0f3f9;
-    font-size: 20px;
-}
-
-.modal h2 { margin-top: 4px; }
-
-.modal-muted { color: var(--muted); font-size: 13px; }
-
-.form-field { margin: 15px 0; }
-
-.form-field label {
-    display: block;
-    margin-bottom: 6px;
-    font-size: 13px;
-    font-weight: 750;
-}
-
-.form-field input, .form-field select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #dce3ef;
-    border-radius: 9px;
-    outline: none;
-    background: white;
-}
-
-.form-field input:focus, .form-field select:focus {
-    border-color: var(--blue);
-    box-shadow: 0 0 0 3px rgba(52,120,246,.1);
-}
-
-.modal .btn { width: 100%; margin-top: 8px; }
-
-.notice {
-    background: #fff5d9;
-    color: #76570b;
-    padding: 11px;
-    border-radius: 9px;
-    font-size: 12px;
-    margin-top: 14px;
-}
-
-#toast {
-    position: fixed;
-    bottom: 22px;
-    left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    opacity: 0;
-    background: #10254a;
-    color: white;
-    padding: 13px 20px;
-    border-radius: 12px;
-    z-index: 200;
-    transition: .25s;
-    box-shadow: var(--shadow);
-    max-width: 90%;
-    text-align: center;
-    font-size: 13px;
-}
-
-#toast.show {
-    transform: translateX(-50%) translateY(0);
-    opacity: 1;
-}
-
-@media(max-width: 950px) {
-    .nav-links { gap: 13px; }
-    .nav-actions .btn { padding: 9px 12px; }
-    .hero-grid { gap: 20px; }
-    .stats { grid-template-columns: repeat(2,1fr); }
-    .course-grid { grid-template-columns: repeat(2,1fr); }
-    .footer-grid { grid-template-columns: repeat(2,1fr); }
-}
-
-@media(max-width: 700px) {
-    .nav-inner { min-height: 68px; }
-    .logo { font-size: 22px; }
-    .menu-toggle { display: block; }
-
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 68px;
-        left: 0;
-        right: 0;
-        background: white;
-        border-bottom: 1px solid var(--border);
-        padding: 18px 5%;
-        align-items: stretch;
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    .nav-links.open { display: flex; }
-
-    .nav-actions .btn-outline { display: none; }
-
-    .hero-grid {
-        grid-template-columns: 1fr;
-        padding-top: 45px;
-    }
-
-    .hero h1 { letter-spacing: -1.5px; }
-    .hero-art { min-height: 290px; }
-    .floating-note { right: 0; }
-
-    .stats { gap: 10px; }
-    .stat { padding: 14px; gap: 9px; }
-    .stat-icon { width: 40px; height: 40px; }
-    .stat strong { font-size: 21px; }
-
-    .section-head {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .course-grid, .benefit-grid, .dashboard-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .search-row { flex-direction: column; }
-
-    .cta {
-        padding: 27px;
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-}
-
-@media(max-width: 390px) {
-    .stats { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr; }
-    .nav-actions { gap: 6px; }
-    .nav-actions .btn { padding: 8px 10px; }
-}
+:root{--p:#5b5ce2;--ink:#1b2440;--muted:#71809b;--line:#e7ebf3;--bg:#f5f7fb}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,Segoe UI,sans-serif}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px;font-weight:700}
+.primary{background:var(--p);color:white}.soft{background:#eeeeff;color:var(--p)}.outline{background:white;border:1px solid var(--line)}
+.hidden{display:none!important}.muted{color:var(--muted)}
+.auth{min-height:100vh;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 15% 15%,#e5e4ff,transparent 35%),radial-gradient(circle at 90% 90%,#d8f8eb,transparent 30%),var(--bg)}
+.box{background:white;border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:0 15px 45px #24315b0d}
+.auth .box{width:min(420px,100%)}
+.logo{font-weight:900;font-size:22px}.logo b{display:inline-grid;place-items:center;background:var(--p);color:white;border-radius:10px;width:35px;height:35px;margin-right:8px}
+.field{display:grid;gap:6px;margin:14px 0}.field label{font-size:13px;font-weight:750}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);background:#fbfcff;border-radius:10px;padding:11px}
+.full{width:100%;margin-top:8px}.note{background:#f3f4ff;border-radius:10px;padding:10px;font-size:12px;color:var(--muted);margin-top:15px}
+.app{min-height:100vh;display:grid;grid-template-columns:235px 1fr}
+.side{background:white;border-right:1px solid var(--line);padding:22px 14px;display:flex;flex-direction:column;gap:28px}
+.nav{display:grid;gap:5px}.nav button{background:transparent;text-align:left;color:#68758f}
+.nav button.active,.nav button:hover{background:#efefff;color:var(--p)}
+.nav-label{font-size:10px;text-transform:uppercase;letter-spacing:1.4px;color:#9aa4b6;font-weight:900;padding:0 10px;margin-bottom:8px}
+.top{height:74px;background:#ffffffdd;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:2;gap:12px}
+.top input{max-width:360px;width:45%;border:1px solid var(--line);padding:10px 12px;border-radius:10px;background:#fafbff}
+.content{padding:28px;max-width:1500px;margin:auto}
+.head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:20px}
+.head h1{margin-bottom:4px;font-size:28px;letter-spacing:-.8px}
+.hero{background:linear-gradient(110deg,#514fe0,#8b7df5);color:white;border-radius:20px;padding:26px 28px;display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.hero h2{margin:6px 0;font-size:26px}.hero p{margin-bottom:14px;opacity:.85}.hero span{font-size:65px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:22px}
+.stat,.panel,.card{background:white;border:1px solid var(--line);border-radius:16px;padding:18px}
+.stat small{color:var(--muted);font-weight:700}.stat strong{display:block;font-size:28px;margin-top:8px}
+.cols{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;margin-bottom:20px}
+.panel h3{font-size:17px}
+.course-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.card{padding:0;overflow:hidden}.cover{height:105px;display:grid;place-items:center;font-size:44px;background:linear-gradient(135deg,#e7e5ff,#c4c0ff)}
+.cover.mint{background:linear-gradient(135deg,#dff9ef,#a9ead2)}.cover.peach{background:linear-gradient(135deg,#ffebdc,#ffd0ad)}.cover.blue{background:linear-gradient(135deg,#dcefff,#b8d9ff)}
+.cardbody{padding:15px}.card h3{font-size:15px;margin:0 0 5px}.card p{font-size:12px;color:var(--muted);min-height:36px}
+.meta{font-size:11px;color:var(--muted);padding:10px 0;border-top:1px solid var(--line)}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.progress{height:6px;background:#edf0f7;border-radius:8px;overflow:hidden;margin:8px 0}.progress span{display:block;height:100%;background:var(--p)}
+.listrow{padding:12px 0;border-bottom:1px solid var(--line)}.listrow:last-child{border:0}
+.filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}
+.chip{background:white;border:1px solid var(--line);border-radius:30px;color:var(--muted);padding:7px 12px}
+.chip.active{background:#eeeeff;color:var(--p)}
+table{border-collapse:collapse;width:100%;min-width:560px}th,td{text-align:left;padding:13px;border-bottom:1px solid var(--line);font-size:13px}
+th{color:var(--muted);font-size:11px;text-transform:uppercase}
+.tablewrap{overflow:auto;background:white;border:1px solid var(--line);border-radius:14px}
+.modalbg{position:fixed;inset:0;background:#10172b99;z-index:5;display:grid;place-items:center;padding:16px}
+.modal{background:white;border-radius:18px;padding:23px;width:min(510px,100%);max-height:90vh;overflow:auto}
+.modalhead{display:flex;justify-content:space-between;align-items:center}.modalhead h2{font-size:21px}
+.toast{position:fixed;right:20px;bottom:20px;background:#1b2440;color:white;padding:13px 17px;border-radius:11px;z-index:10}
+.pill{background:#e0f7ed;color:#187c5b;border-radius:30px;padding:4px 8px;font-size:11px}
+.empty{padding:25px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px;grid-column:1/-1}
+@media(max-width:1000px){.stats{grid-template-columns:repeat(2,1fr)}.course-grid{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}}
+@media(max-width:700px){.app{grid-template-columns:1fr}.side{position:fixed;z-index:4;left:-250px;top:0;bottom:0;width:235px;box-shadow:0 10px 30px #2222;transition:.2s}.side.open{left:0}.top{padding:0 13px}.content{padding:18px 13px}.course-grid{grid-template-columns:1fr}.hero{padding:20px}.hero span{font-size:42px}.hero h2{font-size:22px}.head{align-items:flex-start;flex-direction:column}.stats{gap:9px}.stat{padding:13px}.stat strong{font-size:24px}}
 </style>
 </head>
-
 <body>
 
-<header class="navbar">
-    <div class="container nav-inner">
-        <a class="logo" href="#home" aria-label="OnlineLMS home">
-            <span class="logo-icon">🎓</span>Online<span>LMS</span>
-        </a>
+<section class="auth" id="auth">
+<div class="box">
+<div class="logo"><b>✦</b> LearnSpace</div>
+<h1 id="authTitle" style="margin:25px 0 5px">Welcome back 👋</h1>
+<p class="muted" id="authSub">Sign in to continue learning.</p>
+<form id="authForm">
+<div class="field hidden" id="nameWrap"><label>Full name</label><input id="name" autocomplete="name"></div>
+<div class="field"><label>Email address</label><input id="email" type="email" required placeholder="you@example.com"></div>
+<div class="field"><label>Password</label><input id="password" type="password" minlength="4" required placeholder="At least 4 characters"></div>
+<button class="primary full" id="authSubmit">Sign in</button>
+</form>
+<p style="text-align:center;margin:18px 0 0" class="muted"><span id="switchText">New here?</span> <button class="soft" id="switch" type="button">Create account</button></p>
+<div class="note">Local application: data is stored in this browser only. This demo login is not secure enough for real users or sensitive data.</div>
+<button class="outline full" id="demo" type="button">Explore with demo account</button>
+</div>
+</section>
 
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-
-        <nav class="nav-links" id="navLinks">
-            <a href="#home">Home</a>
-            <a href="#courses">Courses</a>
-            <a href="#about">About</a>
-            <a href="#dashboard">Student Dashboard</a>
-            <a href="#contact">Contact</a>
-        </nav>
-
-        <div class="nav-actions">
-            <button class="btn btn-outline" onclick="openModal('loginModal')">Log In</button>
-            <button class="btn btn-primary" onclick="openModal('signupModal')">Get Started ↗</button>
-        </div>
-    </div>
+<div id="app" class="app hidden">
+<aside class="side" id="side">
+<div class="logo"><b>✦</b> LearnSpace</div>
+<div><div class="nav-label">Workspace</div><nav class="nav">
+<button class="active" data-view="dashboard">▦ &nbsp; Dashboard</button>
+<button data-view="courses">▤ &nbsp; Explore courses</button>
+<button data-view="learning">◷ &nbsp; My learning</button>
+<button data-view="quizzes">☑ &nbsp; Quizzes & tests</button>
+<button data-view="students">♙ &nbsp; Students</button>
+<button data-view="manage">＋ &nbsp; Manage courses</button>
+<button data-view="reports">▥ &nbsp; Progress reports</button>
+</nav></div>
+<div class="note" style="margin-top:auto"><strong>🚀 Keep learning</strong><p>Small steps every day lead to big results.</p><button class="soft full" data-go="courses">Find a course</button></div>
+</aside>
+<main>
+<header class="top">
+<button class="outline" id="menu">☰</button>
+<input id="search" placeholder="Search courses..." aria-label="Search courses">
+<div class="row"><span id="who">Learner</span><button class="outline" id="profile">♙</button><button class="outline" id="logout">Log out</button></div>
 </header>
-
-<main id="home">
-
-    <section class="hero">
-        <div class="container hero-grid">
-            <div>
-                <div class="eyebrow">✦ YOUR FUTURE STARTS HERE</div>
-                <h1>Learn today.<br><span>Lead tomorrow.</span></h1>
-                <p class="hero-copy">
-                    Discover new skills, explore expert-led courses,
-                    track your learning progress, and reach your goals
-                    with OnlineLMS.
-                </p>
-                <div class="hero-buttons">
-                    <a class="btn btn-primary" href="#courses">Explore Courses →</a>
-                    <button class="btn btn-outline" onclick="showToast('Welcome to the OnlineLMS interactive website preview!')">▷ Take a Tour</button>
-                </div>
-            </div>
-
-            <div class="hero-art" aria-label="Learning dashboard illustration">
-                <div class="art-orbit"></div>
-                <div class="art-orbit two"></div>
-
-                <div class="learning-card">
-                    <div class="learning-card-head">
-                        <div style="display:flex;align-items:center;gap:12px">
-                            <div class="avatar">AK</div>
-                            <div>
-                                <div class="mini-label">YOUR LEARNING SPACE</div>
-                                <strong>A better you, every day.</strong>
-                            </div>
-                        </div>
-                        <span class="online-pill">● ACTIVE</span>
-                    </div>
-
-                    <div class="mini-label">CONTINUE LEARNING</div>
-                    <h3>Your courses at a glance</h3>
-
-                    <div class="mini-course">
-                        <div class="mini-icon">☕</div>
-                        <div><strong>Java Programming</strong><small>20% completed</small></div>
-                    </div>
-
-                    <div class="mini-course">
-                        <div class="mini-icon">▤</div>
-                        <div><strong>Database Management</strong><small>50% completed</small></div>
-                    </div>
-                </div>
-
-                <div class="floating-note">✨ Small steps. Big achievements.</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="container stats" aria-label="Platform highlights">
-        <div class="stat">
-            <div class="stat-icon">📚</div>
-            <div><strong>10+</strong><small>Learning Topics</small></div>
-        </div>
-        <div class="stat">
-            <div class="stat-icon">🎯</div>
-            <div><strong>Self-paced</strong><small>Learn your way</small></div>
-        </div>
-        <div class="stat">
-            <div class="stat-icon">📈</div>
-            <div><strong>Track</strong><small>Your progress</small></div>
-        </div>
-        <div class="stat">
-            <div class="stat-icon">🏆</div>
-            <div><strong>Practice</strong><small>Test your knowledge</small></div>
-        </div>
-    </section>
-
-    <section class="container section" id="courses">
-        <div class="section-head">
-            <div>
-                <h2>Explore popular courses</h2>
-                <p>Build practical skills, one course at a time.</p>
-            </div>
-            <a class="text-link" href="#courseSearch">Find your next course →</a>
-        </div>
-
-        <div class="search-row">
-            <label class="search-box">
-                <span>⌕</span>
-                <input id="courseSearch" type="search" placeholder="Search courses, topics, or skills..." aria-label="Search courses">
-            </label>
-        </div>
-
-        <div class="filters" id="filters">
-            <button class="filter active" data-category="all">All Courses</button>
-            <button class="filter" data-category="programming">Programming</button>
-            <button class="filter" data-category="database">Database</button>
-            <button class="filter" data-category="web">Web Development</button>
-            <button class="filter" data-category="design">Design</button>
-        </div>
-
-        <div class="course-grid" id="courseGrid">
-
-            <article class="course-card" data-category="programming" data-search="java programming beginner object oriented">
-                <div class="course-cover cover-java">
-                    <span class="category">PROGRAMMING</span><span class="cover-symbol">☕</span>
-                </div>
-                <div class="course-body">
-                    <h3>Java Programming</h3>
-                    <p class="course-description">Learn Java fundamentals, object-oriented programming, and core concepts.</p>
-                    <div class="course-meta"><span>▤ Beginner friendly</span><span>◷ Self-paced</span></div>
-                    <div class="course-bottom">
-                        <span class="price">Free <small>Demo course</small></span>
-                        <button class="btn btn-outline course-details" data-course="Java Programming">View Course →</button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="course-card" data-category="database" data-search="database management sql oracle relational">
-                <div class="course-cover cover-db">
-                    <span class="category">DATABASE</span><span class="cover-symbol">🗄️</span>
-                </div>
-                <div class="course-body">
-                    <h3>Database Management</h3>
-                    <p class="course-description">Explore SQL queries, relational database concepts, and data management.</p>
-                    <div class="course-meta"><span>▤ SQL fundamentals</span><span>◷ Self-paced</span></div>
-                    <div class="course-bottom">
-                        <span class="price">Free <small>Demo course</small></span>
-                        <button class="btn btn-outline course-details" data-course="Database Management">View Course →</button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="course-card" data-category="programming" data-search="python programming automation data">
-                <div class="course-cover cover-python">
-                    <span class="category">PROGRAMMING</span><span class="cover-symbol">🐍</span>
-                </div>
-                <div class="course-body">
-                    <h3>Python Programming</h3>
-                    <p class="course-description">Start with Python syntax, useful programming patterns, and problem-solving.</p>
-                    <div class="course-meta"><span>▤ Beginner friendly</span><span>◷ Self-paced</span></div>
-                    <div class="course-bottom">
-                        <span class="price">Free <small>Demo course</small></span>
-                        <button class="btn btn-outline course-details" data-course="Python Programming">View Course →</button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="course-card" data-category="web" data-search="web development html css javascript">
-                <div class="course-cover cover-web">
-                    <span class="category">WEB DEVELOPMENT</span><span class="cover-symbol">🌐</span>
-                </div>
-                <div class="course-body">
-                    <h3>Web Development</h3>
-                    <p class="course-description">Build the foundations of websites with HTML, CSS, and JavaScript.</p>
-                    <div class="course-meta"><span>▤ Hands-on learning</span><span>◷ Self-paced</span></div>
-                    <div class="course-bottom">
-                        <span class="price">Free <small>Demo course</small></span>
-                        <button class="btn btn-outline course-details" data-course="Web Development">View Course →</button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="course-card" data-category="design" data-search="ui ux design user interface experience">
-                <div class="course-cover cover-design">
-                    <span class="category">DESIGN</span><span class="cover-symbol">🎨</span>
-                </div>
-                <div class="course-body">
-                    <h3>UI/UX Design Basics</h3>
-                    <p class="course-description">Discover user-centered design, wireframes, layouts, and usability.</p>
-                    <div class="course-meta"><span>▤ Creative skills</span><span>◷ Self-paced</span></div>
-                    <div class="course-bottom">
-                        <span class="price">Free <small>Demo course</small></span>
-                        <button class="btn btn-outline course-details" data-course="UI/UX Design Basics">View Course →</button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="course-card" data-category="database" data-search="cloud technology data storage computing">
-                <div class="course-cover cover-cloud">
-                    <span class="category">TECHNOLOGY</span><span class="cover-symbol">☁️</span>
-                </div>
-                <div class="course-body">
-                    <h3>Cloud Computing Basics</h3>
-                    <p class="course-description">Understand cloud services, computing concepts, and modern infrastructure.</p>
-                    <div class="course-meta"><span>▤ Core concepts</span><span>◷ Self-paced</span></div>
-                    <div class="course-bottom">
-                        <span class="price">Free <small>Demo course</small></span>
-                        <button class="btn btn-outline course-details" data-course="Cloud Computing Basics">View Course →</button>
-                    </div>
-                </div>
-            </article>
-        </div>
-
-        <div class="empty-state" id="emptyState">
-            <h3>No matching courses found</h3>
-            <p>Try another search term or choose a different category.</p>
-            <button class="btn btn-primary" id="resetSearch">Show All Courses</button>
-        </div>
-    </section>
-
-    <section class="benefit-section" id="about">
-        <div class="container">
-            <div class="section-head">
-                <div>
-                    <h2>A smarter way to learn</h2>
-                    <p>Designed to make your learning journey organized and engaging.</p>
-                </div>
-            </div>
-
-            <div class="benefit-grid">
-                <div class="benefit">
-                    <div class="benefit-icon">⏱️</div>
-                    <div><h3>Flexible Learning</h3><p>Explore learning topics at your own pace and return when you're ready.</p></div>
-                </div>
-                <div class="benefit">
-                    <div class="benefit-icon">🧑‍🏫</div>
-                    <div><h3>Organized Courses</h3><p>Keep course information and learning resources organized in one place.</p></div>
-                </div>
-                <div class="benefit">
-                    <div class="benefit-icon">📊</div>
-                    <div><h3>Progress Tracking</h3><p>See an illustrative view of completed work and learning progress.</p></div>
-                </div>
-                <div class="benefit">
-                    <div class="benefit-icon">📝</div>
-                    <div><h3>Quiz Practice</h3><p>Review sample quiz results and see how assessment information can be presented.</p></div>
-                </div>
-                <div class="benefit">
-                    <div class="benefit-icon">💻</div>
-                    <div><h3>Modern Interface</h3><p>Access a responsive design built for desktop, tablet, and mobile screens.</p></div>
-                </div>
-                <div class="benefit">
-                    <div class="benefit-icon">🚀</div>
-                    <div><h3>Keep Growing</h3><p>Explore new topics and build your knowledge one step at a time.</p></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="container section" id="dashboard">
-        <div class="section-head">
-            <div>
-                <h2>Student dashboard preview</h2>
-                <p>A glimpse of the course progress and quiz information an LMS can display.</p>
-            </div>
-            <span class="demo-badge">ILLUSTRATIVE DATA</span>
-        </div>
-
-        <div class="dashboard-panel">
-            <div class="dashboard-top">
-                <div>
-                    <h3>Welcome back, Asha! 👋</h3>
-                    <span class="muted">Here's your sample learning overview.</span>
-                </div>
-                <div class="avatar">AK</div>
-            </div>
-
-            <div class="dashboard-grid">
-                <div>
-                    <h3>Course progress</h3>
-
-                    <div class="progress-item">
-                        <div class="progress-info"><strong>Java Programming</strong><span>20%</span></div>
-                        <div class="progress-track"><div class="progress-value" style="width:20%"></div></div>
-                    </div>
-
-                    <div class="progress-item">
-                        <div class="progress-info"><strong>Database Management</strong><span>50%</span></div>
-                        <div class="progress-track"><div class="progress-value" style="width:50%"></div></div>
-                    </div>
-
-                    <div class="progress-item">
-                        <div class="progress-info"><strong>Python Programming</strong><span>0%</span></div>
-                        <div class="progress-track"><div class="progress-value" style="width:0%"></div></div>
-                    </div>
-                </div>
-
-                <div>
-                    <h3>Recent quiz results</h3>
-
-                    <div class="quiz-result">
-                        <div><strong>Java Basics Quiz</strong><small>Sample assessment</small></div>
-                        <span class="score">16 / 20</span>
-                    </div>
-
-                    <div class="quiz-result">
-                        <div><strong>SQL Basics Quiz</strong><small>Sample assessment</small></div>
-                        <span class="score">— / 25</span>
-                    </div>
-
-                    <div class="notice">
-                        This public preview uses sample information. It is not connected to your Oracle database.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="container cta" id="contact">
-        <div>
-            <h2>Ready to start learning?</h2>
-            <p>Explore the course catalogue and discover your next learning goal.</p>
-        </div>
-        <a class="btn btn-primary" href="#courses">Browse Courses →</a>
-    </section>
-
-</main>
-
-<footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div>
-                <a class="logo" href="#home">🎓 Online<span>LMS</span></a>
-                <p>A learning management system academic project focused on course discovery, student progress, and quiz results.</p>
-                <p>Static website preview hosted on GitHub Pages.</p>
-            </div>
-
-            <div>
-                <h4>Explore</h4>
-                <div class="footer-links">
-                    <a href="#courses">Courses</a>
-                    <a href="#about">About OnlineLMS</a>
-                    <a href="#dashboard">Dashboard Preview</a>
-                </div>
-            </div>
-
-            <div>
-                <h4>Learning</h4>
-                <div class="footer-links">
-                    <a href="#courses">Programming</a>
-                    <a href="#courses">Database</a>
-                    <a href="#courses">Web Development</a>
-                </div>
-            </div>
-
-            <div>
-                <h4>Project</h4>
-                <div class="footer-links">
-                    <a href="https://github.com/Faisal-LR/OnlineLMS" target="_blank" rel="noopener">Source Code ↗</a>
-                    <a href="#contact">Contact Section</a>
-                    <a href="#home">Back to Top ↑</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <span>© <span id="year"></span> OnlineLMS · Academic Project</span>
-            <span>Built with HTML, CSS & JavaScript</span>
-        </div>
-    </div>
-</footer>
-
-<!-- Login modal -->
-<div class="modal-backdrop" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
-    <div class="modal">
-        <button class="modal-close" data-close aria-label="Close">×</button>
-        <h2 id="loginTitle">Welcome back 👋</h2>
-        <p class="modal-muted">This is a visual login preview, not a real account login.</p>
-
-        <form id="loginForm">
-            <div class="form-field">
-                <label for="loginEmail">Email address</label>
-                <input id="loginEmail" type="email" placeholder="student@example.com" required>
-            </div>
-            <div class="form-field">
-                <label for="loginPassword">Password</label>
-                <input id="loginPassword" type="password" placeholder="Enter any demo password" required>
-            </div>
-            <button class="btn btn-primary" type="submit">Preview Dashboard →</button>
-        </form>
-
-        <div class="notice">
-            No credentials are sent to a server. To log in to the real application, use your locally running Tomcat website.
-        </div>
-    </div>
-</div>
-
-<!-- Sign-up modal -->
-<div class="modal-backdrop" id="signupModal" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
-    <div class="modal">
-        <button class="modal-close" data-close aria-label="Close">×</button>
-        <h2 id="signupTitle">Join OnlineLMS</h2>
-        <p class="modal-muted">Try the sign-up interface in this static preview.</p>
-
-        <form id="signupForm">
-            <div class="form-field">
-                <label for="signupName">Full name</label>
-                <input id="signupName" type="text" placeholder="Your name" required>
-            </div>
-            <div class="form-field">
-                <label for="signupEmail">Email address</label>
-                <input id="signupEmail" type="email" placeholder="you@example.com" required>
-            </div>
-            <div class="form-field">
-                <label for="signupRole">I am a</label>
-                <select id="signupRole">
-                    <option>Student</option>
-                    <option>Instructor</option>
-                </select>
-            </div>
-            <button class="btn btn-primary" type="submit">Preview Welcome →</button>
-        </form>
-
-        <div class="notice">
-            This form does not create an account or save data. The full Java application handles real database operations locally.
-        </div>
-    </div>
-</div>
-
-<!-- Course detail modal -->
-<div class="modal-backdrop" id="courseModal" role="dialog" aria-modal="true" aria-labelledby="courseModalTitle">
-    <div class="modal">
-        <button class="modal-close" data-close aria-label="Close">×</button>
-        <div class="eyebrow" style="background:#eaf1ff;color:#3478f6;border:0">COURSE OVERVIEW</div>
-        <h2 id="courseModalTitle">Course</h2>
-        <p id="courseModalText" class="modal-muted"></p>
-        <div class="notice">This is a course information preview. Enrollment is not connected to a live database.</div>
-        <button class="btn btn-primary" id="courseModalAction">Got it</button>
-    </div>
-</div>
-
-<div id="toast" role="status" aria-live="polite"></div>
+<div class="content">
+<section class="view" id="dashboard">
+<div class="head"><div><h1 id="greeting">Welcome back 👋</h1><p class="muted">Your learning journey, all in one place.</p></div><button class="primary" data-action="course">＋ Add course</button></div>
+<div class="hero"><div><small>YOUR LEARNING SPACE</small><h2>Learn something amazing today.</h2><p>Build skills, track progress, and reach your goals.</p><button style="background:white;color:#5552d8" data-go="learning">Continue learning →</button></div><span>🎓</span></div>
+<div class="stats" id="stats"></div>
+<div class="cols"><div class="panel"><div class="row"><h3>Continue learning</h3><button class="soft" data-go="learning">View all →</button></div><div id="continue"></div></div>
+<div class="panel"><h3>Learning tips</h3><div class="listrow">🎯 <strong>Set a small daily goal</strong><p class="muted">Even 15 minutes can build a habit.</p></div><div class="listrow">🧠 <strong>Practice what you learn</strong><p class="muted">Try a quiz to check your understanding.</p></div><div class="listrow">🌱 <strong>Keep your momentum</strong><p class="muted">Return to a course and update your progress.</p></div></div></div>
+<div class="panel"><div class="row"><h3>Recommended courses</h3><button class="soft" data-go="courses">Browse all →</button></div><div class="course-grid" id="recommended"></div></div>
+</section>
+<section class="view hidden" id="courses"><div class="head"><div><h1>Explore courses</h1><p class="muted">Find a course and enrol to add it to your learning list.</p></div><button class="primary" data-action="course">＋ Add course</button></div><div class="filters" id="filters"></div><div class="course-grid" id="allCourses"></div></section>
+<section class="view hidden" id="learning"><div class="head"><div><h1>My learning</h1><p class="muted">Pick up where you left off.</p></div></div><div class="course-grid" id="myCourses"></div></section>
+<section class="view hidden" id="quizzes"><div class="head"><div><h1>Quizzes & tests</h1><p class="muted">Take a short quiz and get an instant score.</p></div></div><div class="course-grid" id="quizCards"></div><div class="panel" style="margin-top:20px"><h3>Recent results</h3><div id="results"></div></div></section>
+<section class="view hidden" id="students"><div class="head"><div><h1>Students</h1><p class="muted">Manage the local student directory.</p></div><button class="primary" data-action="student">＋ Add student</button></div><div class="tablewrap"><table><thead><tr><th>Name</th><th>Email</th><th>Joined</th><th>Status</th><th>Action</th></tr></thead><tbody id="studentRows"></tbody></table></div></section>
+<section class="view hidden" id="manage"><div class="head"><div><h1>Manage courses</h1><p class="muted">Add, edit, and delete courses saved in this browser.</p></div><button class="primary" data-action="course">＋ Create course</button></div><div class="tablewrap"><table><thead><tr><th>Course</th><th>Category</th><th>Instructor</th><th>Duration</th><th>Actions</th></tr></thead><tbody id="manageRows"></tbody></table></div></section>
+<section class="view hidden" id="reports"><div class="head"><div><h1>Progress reports</h1><p class="muted">A snapshot of your local learning activity.</p></div><button class="outline" id="export">Export data</button></div><div class="stats" id="reportStats"></div><div class="panel"><h3>Course progress</h3><div id="reportCourses"></div></div></section>
+<p class="muted" style="text-align:center;font-size:11px;margin-top:24px">LearnSpace · Local demo · Stored in this browser</p>
+</div></main></div>
+<div id="modal"></div><div id="toast"></div>
 
 <script>
-const $ = (selector) => document.querySelector(selector);
-const $$ = (selector) => document.querySelectorAll(selector);
-
-$("#year").textContent = new Date().getFullYear();
-
-function openModal(id) {
-    const modal = document.getElementById(id);
-    if (!modal) return;
-    modal.classList.add("open");
-    document.body.style.overflow = "hidden";
-    const firstInput = modal.querySelector("input");
-    if (firstInput) setTimeout(() => firstInput.focus(), 100);
-}
-
-function closeModal(modal) {
-    modal.classList.remove("open");
-    if (!$(".modal-backdrop.open")) document.body.style.overflow = "";
-}
-
-$$("[data-close]").forEach(button => {
-    button.addEventListener("click", () => closeModal(button.closest(".modal-backdrop")));
-});
-
-$$(".modal-backdrop").forEach(backdrop => {
-    backdrop.addEventListener("click", event => {
-        if (event.target === backdrop) closeModal(backdrop);
-    });
-});
-
-document.addEventListener("keydown", event => {
-    if (event.key === "Escape") {
-        $$(".modal-backdrop.open").forEach(closeModal);
-    }
-});
-
-let toastTimer;
-
-function showToast(message) {
-    const toast = $("#toast");
-    toast.textContent = message;
-    toast.classList.add("show");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove("show"), 3200);
-}
-
-// Mobile navigation
-$("#menuToggle").addEventListener("click", () => {
-    const nav = $("#navLinks");
-    const open = nav.classList.toggle("open");
-    $("#menuToggle").setAttribute("aria-expanded", String(open));
-});
-
-$$(".nav-links a").forEach(link => {
-    link.addEventListener("click", () => {
-        $("#navLinks").classList.remove("open");
-        $("#menuToggle").setAttribute("aria-expanded", "false");
-    });
-});
-
-// Course search and category filters
-let activeCategory = "all";
-
-function filterCourses() {
-    const query = $("#courseSearch").value.trim().toLowerCase();
-    let visible = 0;
-
-    $$(".course-card").forEach(card => {
-        const matchesCategory =
-            activeCategory === "all" ||
-            card.dataset.category === activeCategory;
-
-        const matchesQuery =
-            card.dataset.search.toLowerCase().includes(query) ||
-            card.querySelector("h3").textContent.toLowerCase().includes(query);
-
-        const show = matchesCategory && matchesQuery;
-        card.style.display = show ? "" : "none";
-        if (show) visible++;
-    });
-
-    $("#emptyState").style.display = visible ? "none" : "block";
-}
-
-$("#courseSearch").addEventListener("input", filterCourses);
-
-$$(".filter").forEach(button => {
-    button.addEventListener("click", () => {
-        $$(".filter").forEach(item => item.classList.remove("active"));
-        button.classList.add("active");
-        activeCategory = button.dataset.category;
-        filterCourses();
-    });
-});
-
-$("#resetSearch").addEventListener("click", () => {
-    $("#courseSearch").value = "";
-    activeCategory = "all";
-    $$(".filter").forEach(item => {
-        item.classList.toggle("active", item.dataset.category === "all");
-    });
-    filterCourses();
-});
-
-// Course information popups
-const courseInfo = {
-    "Java Programming": "Explore Java fundamentals, variables, object-oriented programming, and core programming concepts.",
-    "Database Management": "Explore relational databases, SQL queries, data organization, and database management concepts.",
-    "Python Programming": "Explore Python syntax, programming fundamentals, and practical problem-solving.",
-    "Web Development": "Discover how HTML, CSS, and JavaScript work together to create websites.",
-    "UI/UX Design Basics": "Learn the foundations of user-centered design, layout, wireframes, and usability.",
-    "Cloud Computing Basics": "Discover cloud computing concepts, common services, and modern infrastructure."
-};
-
-$$(".course-details").forEach(button => {
-    button.addEventListener("click", () => {
-        const name = button.dataset.course;
-        $("#courseModalTitle").textContent = name;
-        $("#courseModalText").textContent = courseInfo[name] || "Explore this learning topic.";
-        openModal("courseModal");
-    });
-});
-
-$("#courseModalAction").addEventListener("click", () => {
-    closeModal($("#courseModal"));
-    showToast("Thanks for exploring OnlineLMS!");
-});
-
-// Visual-only login form
-$("#loginForm").addEventListener("submit", event => {
-    event.preventDefault();
-    closeModal($("#loginModal"));
-    $("#loginForm").reset();
-    $("#dashboard").scrollIntoView({ behavior: "smooth" });
-    showToast("Dashboard preview opened. This is not a real account login.");
-});
-
-// Visual-only sign-up form
-$("#signupForm").addEventListener("submit", event => {
-    event.preventDefault();
-    const name = $("#signupName").value.trim();
-    const role = $("#signupRole").value;
-    closeModal($("#signupModal"));
-    $("#signupForm").reset();
-    showToast("Thanks, " + name + "! Your " + role.toLowerCase() + " sign-up was previewed only.");
-});
+const KEY='learnspace_lms_v1';
+const defaults=[
+{id:1,title:'Web Development Fundamentals',category:'Development',instructor:'Alex Morgan',duration:'6 weeks',level:'Beginner',icon:'💻',color:'',desc:'Learn HTML, CSS, and JavaScript by building real web pages.',enrolled:false,progress:0,learners:128},
+{id:2,title:'UI/UX Design Essentials',category:'Design',instructor:'Priya Shah',duration:'4 weeks',level:'Beginner',icon:'🎨',color:'mint',desc:'Explore user research, wireframes, prototypes, and thoughtful design.',enrolled:true,progress:62,learners:94},
+{id:3,title:'Data Science with Python',category:'Data',instructor:'Jordan Lee',duration:'8 weeks',level:'Intermediate',icon:'📊',color:'peach',desc:'Explore datasets, visualize patterns, and find insights with Python.',enrolled:false,progress:0,learners:176},
+{id:4,title:'Database Design & SQL',category:'Development',instructor:'Sam Rivera',duration:'5 weeks',level:'Beginner',icon:'🗄️',color:'blue',desc:'Understand relational databases, SQL queries, and clean data models.',enrolled:true,progress:20,learners:112},
+{id:5,title:'Digital Marketing Basics',category:'Business',instructor:'Mia Chen',duration:'3 weeks',level:'Beginner',icon:'📣',color:'peach',desc:'Learn content, social media, and campaign planning.',enrolled:false,progress:0,learners:83},
+{id:6,title:'Cybersecurity Foundations',category:'Technology',instructor:'Noah Williams',duration:'6 weeks',level:'Intermediate',icon:'🛡️',color:'',desc:'Learn the basics of protecting systems and information.',enrolled:false,progress:0,learners:143}
+];
+let data;
+try{data=JSON.parse(localStorage.getItem(KEY))||{users:[],courses:defaults,students:[],results:[],session:null}}catch(e){data={users:[],courses:defaults,students:[],results:[],session:null}}
+if(!data.courses)data.courses=defaults;
+let registering=false,filter='All',query='';
+const $=id=>document.getElementById(id);
+const save=()=>localStorage.setItem(KEY,JSON.stringify(data));
+const user=()=>data.users.find(u=>u.email===data.session);
+const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function toast(s){$('toast').innerHTML=`<div class="toast">${safe(s)}</div>`;setTimeout(()=>$('toast').innerHTML='',2600)}
+function mode(){
+$('nameWrap').classList.toggle('hidden',!registering);
+$('name').required=registering;
+$('authTitle').textContent=registering?'Create your account ✨':'Welcome back 👋';
+$('authSub').textContent=registering?'Join LearnSpace and start learning.':'Sign in to continue learning.';
+$('authSubmit').textContent=registering?'Create account':'Sign in';
+$('switchText').textContent=registering?'Already have an account?':'New here?';
+$('switch').textContent=registering?'Sign in':'Create account'}
+$('switch').onclick=()=>{registering=!registering;mode()};
+$('authForm').onsubmit=e=>{
+e.preventDefault();
+let email=$('email').value.trim().toLowerCase(),password=$('password').value,u=data.users.find(x=>x.email===email);
+if(registering){
+if(u)return toast('That email already has an account.');
+u={name:$('name').value.trim(),email,password,joined:new Date().toLocaleDateString()};
+if(!u.name)return toast('Enter your name.');
+data.users.push(u);data.students.push({name:u.name,email,joined:u.joined})
+}else if(!u||u.password!==password)return toast('Incorrect email or password. Try demo account.');
+data.session=email;save();start()};
+$('demo').onclick=()=>{
+let u=data.users.find(x=>x.email==='demo@learnspace.local');
+if(!u){u={name:'Demo Learner',email:'demo@learnspace.local',password:'demo123',joined:new Date().toLocaleDateString()};data.users.push(u)}
+data.session=u.email;save();start()};
+function start(){
+if(!user()){data.session=null;save();return}
+$('auth').classList.add('hidden');$('app').classList.remove('hidden');
+$('who').textContent=user().name;
+$('greeting').textContent='Welcome back, '+user().name.split(' ')[0]+' 👋';
+render();view('dashboard')}
+function logout(){data.session=null;save();$('app').classList.add('hidden');$('auth').classList.remove('hidden');$('password').value=''}
+function view(v){
+document.querySelectorAll('.view').forEach(x=>x.classList.add('hidden'));
+$(v).classList.remove('hidden');
+document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===v));
+$('side').classList.remove('open');
+if(v==='students')renderStudents();if(v==='manage')renderManage();if(v==='reports')renderReports();
+window.scrollTo(0,0)}
+document.body.addEventListener('click',e=>{
+let v=e.target.closest('[data-view]'),g=e.target.closest('[data-go]'),a=e.target.closest('[data-action]'),en=e.target.closest('[data-enroll]'),pr=e.target.closest('[data-progress]'),ed=e.target.closest('[data-edit]'),del=e.target.closest('[data-delete]'),q=e.target.closest('[data-quiz]'),f=e.target.closest('[data-filter]'),rm=e.target.closest('[data-remove]'),cl=e.target.closest('[data-close]');
+if(v)view(v.dataset.view);if(g)view(g.dataset.go);
+if(a)a.dataset.action==='course'?courseModal():studentModal();
+if(en)enroll(+en.dataset.enroll);if(pr)progress(+pr.dataset.progress);
+if(ed)courseModal(+ed.dataset.edit);
+if(del&&confirm('Delete this course?')){data.courses=data.courses.filter(c=>c.id!==+del.dataset.delete);save();render();toast('Course deleted.')}
+if(q)quizModal(q.dataset.quiz);if(f){filter=f.dataset.filter;renderCourses()}
+if(rm){data.students.splice(+rm.dataset.remove,1);save();renderStudents();toast('Student removed.')}
+if(cl||e.target.classList.contains('modalbg'))$('modal').innerHTML=''});
+$('menu').onclick=()=>$('side').classList.toggle('open');
+$('logout').onclick=logout;
+$('profile').onclick=()=>toast(user().name+' · '+user().email);
+$('search').oninput=e=>{query=e.target.value.toLowerCase();view('courses');renderCourses()};
+$('export').onclick=()=>{
+let a=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));
+a.href=url;a.download='learnspace-data.json';a.click();URL.revokeObjectURL(url)};
+function render(){renderStats();renderCourses();renderStudents();renderManage();renderQuizzes();renderReports()}
+function renderStats(){
+let c=data.courses.filter(c=>c.enrolled),done=c.filter(c=>c.progress>=100).length,avg=c.length?Math.round(c.reduce((a,x)=>a+x.progress,0)/c.length):0;
+$('stats').innerHTML=[['📚 Enrolled courses',c.length],['✓ Completed',done],['⏱️ Average progress',avg+'%'],['🏆 Quiz attempts',data.results.length]].map(x=>`<div class="stat"><small>${x[0]}</small><strong>${x[1]}</strong></div>`).join('')}
+function card(c){return `<article class="card"><div class="cover ${safe(c.color)}">${safe(c.icon)}</div><div class="cardbody"><h3>${safe(c.title)}</h3><p>${safe(c.desc)}</p><div class="meta">◷ ${safe(c.duration)} · ${safe(c.level)} · ${c.learners||0} learners</div><div class="row"><strong>${c.enrolled?'✓ Enrolled':'Free'}</strong><button class="soft" data-enroll="${c.id}">${c.enrolled?'Open course':'Enroll now'}</button></div></div></article>`}
+function renderCourses(){
+let cats=['All',...new Set(data.courses.map(c=>c.category))];
+$('filters').innerHTML=cats.map(c=>`<button class="chip ${filter===c?'active':''}" data-filter="${safe(c)}">${safe(c)}</button>`).join('');
+let found=data.courses.filter(c=>(filter==='All'||c.category===filter)&&(`${c.title} ${c.category} ${c.instructor}`.toLowerCase().includes(query)));
+$('allCourses').innerHTML=found.length?found.map(card).join(''):'<div class="empty">No courses found. Try another search.</div>';
+let enrolled=data.courses.filter(c=>c.enrolled);
+$('myCourses').innerHTML=enrolled.length?enrolled.map(c=>`<article class="card"><div class="cover ${safe(c.color)}">${safe(c.icon)}</div><div class="cardbody"><h3>${safe(c.title)}</h3><p>${safe(c.instructor)} · ${safe(c.duration)}</p><div class="progress"><span style="width:${c.progress}%"></span></div><small>${c.progress}% complete</small><button class="primary full" data-progress="${c.id}">Continue (+10%)</button></div></article>`).join(''):'<div class="empty">No enrolled courses yet. Explore courses to get started.</div>';
+$('recommended').innerHTML=data.courses.slice(0,3).map(card).join('');
+$('continue').innerHTML=enrolled.length?enrolled.slice(0,3).map(c=>`<div class="listrow"><div class="row"><strong>${safe(c.icon)} ${safe(c.title)}</strong><small>${c.progress}%</small></div><div class="progress"><span style="width:${c.progress}%"></span></div><button class="soft" data-progress="${c.id}">Continue learning +10%</button></div>`).join(''):'<p class="muted">Enroll in a course to see it here.</p>'}
+function enroll(id){let c=data.courses.find(c=>c.id===id);if(c){if(!c.enrolled){c.enrolled=true;c.learners=(+c.learners||0)+1;toast('Enrolled in '+c.title)}else toast('Course opened: '+c.title);save();render()}}
+function progress(id){let c=data.courses.find(c=>c.id===id);if(c){c.enrolled=true;c.progress=Math.min(100,c.progress+10);save();render();toast(c.progress===100?'Course completed!':'Progress updated: '+c.progress+'%')}}
+function courseModal(id){
+let c=data.courses.find(c=>c.id===id);
+$('modal').innerHTML=`<div class="modalbg"><div class="modal"><div class="modalhead"><h2>${c?'Edit course':'Add a course'}</h2><button data-close>✕</button></div><form id="courseForm">
+<div class="field"><label>Course title</label><input name="title" required value="${safe(c?.title||'')}"></div>
+<div class="field"><label>Description</label><textarea name="desc" required rows="3">${safe(c?.desc||'')}</textarea></div>
+<div class="field"><label>Category</label><select name="category">${['Development','Design','Data','Business','Technology','Other'].map(x=>`<option ${c?.category===x?'selected':''}>${x}</option>`).join('')}</select></div>
+<div class="field"><label>Instructor</label><input name="instructor" required value="${safe(c?.instructor||user().name)}"></div>
+<div class="field"><label>Duration</label><input name="duration" required value="${safe(c?.duration||'4 weeks')}"></div>
+<div class="field"><label>Level</label><select name="level">${['Beginner','Intermediate','Advanced'].map(x=>`<option ${c?.level===x?'selected':''}>${x}</option>`).join('')}</select></div>
+<div class="row"><button type="button" class="outline" data-close>Cancel</button><button class="primary">${c?'Save changes':'Create course'}</button></div></form></div></div>`;
+$('courseForm').onsubmit=e=>{
+e.preventDefault();let f=new FormData(e.target),cat=f.get('category');
+let obj={title:f.get('title').trim(),desc:f.get('desc').trim(),category:cat,instructor:f.get('instructor').trim(),duration:f.get('duration').trim(),level:f.get('level'),icon:({Development:'💻',Design:'🎨',Data:'📊',Business:'📣',Technology:'🛡️',Other:'📘'})[cat],color:({Development:'',Design:'mint',Data:'blue',Business:'peach',Technology:'',Other:'blue'})[cat],learners:0,enrolled:false,progress:0};
+if(c)Object.assign(c,obj,{enrolled:c.enrolled,progress:c.progress,learners:c.learners});else data.courses.unshift({...obj,id:Date.now()});
+save();$('modal').innerHTML='';render();toast(c?'Course updated.':'Course created!')}}
+function studentModal(){
+$('modal').innerHTML=`<div class="modalbg"><div class="modal"><div class="modalhead"><h2>Add student</h2><button data-close>✕</button></div><form id="studentForm"><div class="field"><label>Full name</label><input name="name" required></div><div class="field"><label>Email</label><input name="email" type="email" required></div><div class="row"><button type="button" class="outline" data-close>Cancel</button><button class="primary">Add student</button></div></form></div></div>`;
+$('studentForm').onsubmit=e=>{
+e.preventDefault();let f=new FormData(e.target),email=f.get('email').trim().toLowerCase();
+if(data.students.some(s=>s.email.toLowerCase()===email)||data.users.some(s=>s.email===email))return toast('That email is already registered.');
+data.students.push({name:f.get('name').trim(),email,joined:new Date().toLocaleDateString()});save();$('modal').innerHTML='';renderStudents();toast('Student added successfully.')}}
+function renderStudents(){
+let list=[...data.students];data.users.forEach(u=>{if(!list.some(s=>s.email===u.email))list.push({name:u.name,email:u.email,joined:u.joined})});
+$('studentRows').innerHTML=list.length?list.map((s,i)=>`<tr><td><strong>${safe(s.name)}</strong></td><td>${safe(s.email)}</td><td>${safe(s.joined||'—')}</td><td><span class="pill">Active</span></td><td><button class="soft" data-remove="${i}">Remove</button></td></tr>`).join(''):'<tr><td colspan="5">No students yet. Click Add student.</td></tr>'}
+function renderManage(){
+$('manageRows').innerHTML=data.courses.length?data.courses.map(c=>`<tr><td>${safe(c.icon)} <strong>${safe(c.title)}</strong></td><td>${safe(c.category)}</td><td>${safe(c.instructor)}</td><td>${safe(c.duration)}</td><td><button class="soft" data-edit="${c.id}">Edit</button> <button class="outline" data-delete="${c.id}">Delete</button></td></tr>`).join(''):'<tr><td colspan="5">No courses.</td></tr>'}
+const quizzes=[
+{id:'web',title:'Web Basics',icon:'🌐',desc:'HTML, CSS, and JavaScript essentials.',qs:[['Which language structures a webpage?',['CSS','HTML','SQL'],1],['Which language styles a webpage?',['CSS','Java','Oracle'],0],['JavaScript commonly adds…',['Interactivity','Tables automatically','Internet service'],0]]},
+{id:'db',title:'Database Essentials',icon:'🗄️',desc:'Tables, keys, and SQL basics.',qs:[['Tables contain…',['Rows and columns','Slides','Only images'],0],['A primary key…',['Uniquely identifies a row','Styles a page','Deletes all data'],0],['Which SQL command reads data?',['SELECT','PAINT','OPEN PAGE'],0]]}];
+function renderQuizzes(){
+$('quizCards').innerHTML=quizzes.map(q=>`<article class="card"><div class="cover">${q.icon}</div><div class="cardbody"><h3>${q.title}</h3><p>${q.desc}</p><div class="meta">${q.qs.length} questions · Instant score</div><button class="primary" data-quiz="${q.id}">Start quiz →</button></div></article>`).join('');
+$('results').innerHTML=data.results.length?data.results.slice().reverse().map(r=>`<div class="listrow"><strong>${safe(r.title)} — ${r.score}%</strong><small class="muted"> · ${safe(r.date)}</small></div>`).join(''):'<p class="muted">No quiz attempts yet.</p>'}
+function quizModal(id){
+let q=quizzes.find(x=>x.id===id);
+$('modal').innerHTML=`<div class="modalbg"><div class="modal"><div class="modalhead"><h2>${q.icon} ${q.title}</h2><button data-close>✕</button></div><form id="quizForm">${q.qs.map((x,i)=>`<div class="field"><label>${i+1}. ${x[0]}</label>${x[1].map((o,j)=>`<label><input type="radio" name="q${i}" value="${j}" required> ${o}</label>`).join('')}</div>`).join('')}<button class="primary full">Submit quiz</button></form></div></div>`;
+$('quizForm').onsubmit=e=>{e.preventDefault();let f=new FormData(e.target),score=q.qs.filter((x,i)=>+f.get('q'+i)===x[2]).length,percent=Math.round(score/q.qs.length*100);data.results.push({title:q.title,score:percent,date:new Date().toLocaleString()});save();$('modal').innerHTML='';render();toast('You scored '+percent+'%')}}
+function renderReports(){
+let en=data.courses.filter(c=>c.enrolled),avg=en.length?Math.round(en.reduce((a,c)=>a+c.progress,0)/en.length):0;
+$('reportStats').innerHTML=[['Enrolled',en.length],['Average progress',avg+'%'],['Quiz attempts',data.results.length],['Students',data.students.length+data.users.length]].map(x=>`<div class="stat"><small>${x[0]}</small><strong>${x[1]}</strong></div>`).join('');
+$('reportCourses').innerHTML=en.length?en.map(c=>`<div class="listrow"><div class="row"><strong>${safe(c.title)}</strong><span>${c.progress}%</span></div><div class="progress"><span style="width:${c.progress}%"></span></div></div>`).join(''):'<p class="muted">Enroll in a course to track progress.</p>'}
+if(data.session&&user())start();
 </script>
-
 </body>
 </html>
-```
